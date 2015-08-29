@@ -108,6 +108,9 @@ multi.controller('directReportsCtrl', function($scope, $routeParams, userData) {
 multi.controller('editCtrl', function($scope, $routeParams, userData) {
     $scope.edit = true;
     $scope.userId = $routeParams.userId;
+    $scope.mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //phone number validation(XXX-XXX-XXXX, XXX.XXX.XXXX, XXX XXX XXXX, XXXXXXXXXX)
+    $scope.phoneformat= /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     $scope.incomplete = true;
     if ($scope.userId == 'new') {
         $scope.edit = false;
@@ -118,6 +121,7 @@ multi.controller('editCtrl', function($scope, $routeParams, userData) {
         $scope.newUser = userData.getUser($routeParams.userId);
         $scope.initialValue = angular.copy($scope.newUser);
     }
+
 
     $scope.$watch('newUser.fName', function() {$scope.test();});
     $scope.$watch('newUser.lName', function() {$scope.test();});
@@ -131,8 +135,9 @@ multi.controller('editCtrl', function($scope, $routeParams, userData) {
 
     $scope.test = function() {
         if (!$scope.newUser.fName.length || !$scope.newUser.lName.length || !$scope.newUser.title.length ||
-            !$scope.newUser.age.length || !$scope.newUser.officePhone.length ||
-            !$scope.newUser.cellPhone.length || !$scope.newUser.email.length || !$scope.newUser.sex.length) {
+            !$scope.newUser.age.length || isNaN($scope.newUser.age) || !$scope.phoneformat.test($scope.newUser.officePhone) ||
+            !$scope.phoneformat.test($scope.newUser.cellPhone) || !$scope.mailformat.test($scope.newUser.email)
+            || !$scope.newUser.sex.length) {
             $scope.incomplete = true;
         }
         else {
