@@ -26,19 +26,43 @@
     float: right;
 }
 
-.table td {
+/******* list users style *******/
+.list .table td {
     font-size: 18px;
 }
 
 
-.table img {
-    width: 45px;
+.list .table img {
+    width: 50px;
     height: 70px;
 }
 
-.table .name {
+.list .table .name {
     font-weight: bold;
 }
 
-.table .title{
+
+/******* show user detail style *******/
+.show-detail .table{
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+.show-detail .table .name-title{
+    font-size: 20px;
+    background-color: lightcyan;
+}
+
+.show-detail .table img {
+    width: 80px;
+    height: 110px;
+}
+
+.show-detail .table td:first-child {
+    font-weight: bold;
+}
+
+.show-detail .table td p:first-child {
+    margin-top: 20px;
+    font-weight: bold;
 }

@@ -7,7 +7,7 @@
     </div>
     <hr>
 
-    <h3>Employees</h3>
+    <h3><a ng-click="goBack()"><span class="glyphicon glyphicon-chevron-left"></span></a> Direct Reports</h3>
     <div class="dropdown sort-btn">
         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Sort
             <span class="caret"></span></button>
@@ -20,24 +20,22 @@
 
     <table class="table table-striped">
         <tbody>
-        <tr ng-repeat="user in users | filter: search | orderBy:predicate:reverse | limitTo:pageSize:pageStart" >
+        <tr ng-repeat="report in reports | filter: search | orderBy:predicate:reverse | limitTo:pageSize:pageStart" >
             <td>
-                <img src="{{ user.url }}" alt="Photo">
+                <img src="{{ report.url }}" alt="Photo">
             </td>
-            <td><span class="name">{{ user.fName }} {{ user.lName }}</span>
-                <br><span class="title">{{ user.title }}</span>
+            <td><span class="name">{{ report.fName }} {{ report.lName }}</span>
+                <br><span class="title">{{ report.title }}</span>
             </td>
-            <td>{{user.directReports.length}}</td>
-            <td>
-                <button class="btn" ng-click="deleteUser(user.id)">
-                    <i class="material-icons large">delete</i>
-                </button>
-            </td>
-            <td><a href="#/showUser/{{user.id}}">Detail</a></td>
+            <td>{{report.directReports.length}}</td>
+            <td><a href="#/showUser/{{report.id}}">Detail</a></td>
         </tr>
         </tbody>
     </table>
 
+    <button class="btn btn-success" ng-click="go('/newUser')">
+        <span class="glyphicon glyphicon-user"></span>  Create New User
+    </button>
 
     <button ng-click="viewAll()" class="btn btn-link view-page">View All</button>
     <button ng-click="changePageSize(5)" class="btn btn-link view-page">View 5</button>
@@ -45,7 +43,7 @@
     <hr>
     <button ng-disabled="currentPage == 0" ng-click="previousPage()">Previous</button>
     {{currentPage+1}}/{{numberOfPages()}}
-    <button ng-disabled="currentPage >= users.length/pageSize - 1" ng-click="nextPage()">Next</button>
+    <button ng-disabled="currentPage >= reports.length/pageSize - 1" ng-click="nextPage()">Next</button>
 
 
     {{newUser}}

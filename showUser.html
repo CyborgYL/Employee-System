@@ -1,42 +1,59 @@
-<div>
-    <h3> Edit User: </h3>
-
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">First Name:</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="newUser.fName" placeholder="first name" id="fName">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Last Name:</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="newUser.lName" placeholder="last name" id="lName">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Age:</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="newUser.age" placeholder="age" id="age">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Sex:</label>
-            <div class="col-sm-10">
-                <form action="">
-                    <input type="radio" value="Male" ng-model="newUser.sex" id="Male">Male<br>
-                    <input type="radio" value="Female" ng-model="newUser.sex" id="Female">Female
-                </form>
-            </div>
-        </div>
-    </form>
+<div class="show-detail">
+    <h3><a ng-click="goBack()"><span class="glyphicon glyphicon-chevron-left"></span></a> Employee Information: </h3>
+    <div class="container">
+        <table class="table table-striped">
+            <tbody>
+            <tr class="name-title">
+                <td><img src="{{ newUser.url }}" alt="Photo"></td>
+                <td><p>{{newUser.fName}} {{newUser.lName}}</p><p>{{newUser.title}}</p></td>
+                <td><a href="#/editUser/{{newUser.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{newUser.age}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sex: </td>
+                <td>{{newUser.sex}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>View Manager: </td>
+                <td>{{newUser.manager.fName}} {{newUser.manager.lName}}</td>
+                <td>
+                    <a href="#/showUser/{{newUser.manager.id}}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>View Direct Reports: </td>
+                <td>{{newUser.directReports.length}}</td>
+                <td><a href="#/directReports/{{newUser.id}}"><span class="glyphicon glyphicon-chevron-right"></span></a></td>
+            </tr>
+            <tr>
+                <td>Call Office: </td>
+                <td>{{newUser.officePhone}}</td>
+                <td><span class="glyphicon glyphicon-phone-alt"></span></td>
+            </tr>
+            <tr>
+                <td>Call Cell: </td>
+                <td>{{newUser.cellPhone}}</td>
+                <td><span class="glyphicon glyphicon-earphone"></span></td>
+            </tr>
+            <tr>
+                <td>SMS: </td>
+                <td>{{newUser.cellPhone}}</td>
+                <td><span class="glyphicon glyphicon-comment"></span></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>{{newUser.email}}</td>
+                <td><span class="glyphicon glyphicon-envelope"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <hr>
-    <button class="btn btn-success" ng-click="reset()">
-        <span class="glyphicon glyphicon-repeat"></span> Reset
-    </button>
-    <button class="btn btn-success" ng-disabled="incomplete" ng-click="saveUser('/listUser')">
-        <span class="glyphicon glyphicon-save"></span>  Save Changes
-    </button>
 </div>
 
 
@@ -46,8 +63,5 @@
     }
     else {
         document.getElementById("Male").checked = true;
-    }
-    function defaultValue(){
-        document.getElementById("fName").defaultValue = newUser.fName;
     }
 </script>
