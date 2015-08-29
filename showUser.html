@@ -33,22 +33,22 @@
             <tr>
                 <td>Call Office: </td>
                 <td>{{newUser.officePhone}}</td>
-                <td><span class="glyphicon glyphicon-phone-alt"></span></td>
+                <td><a href="tel:{{newUser.officePhone}}"><span class="glyphicon glyphicon-phone-alt"></span></a></td>
             </tr>
             <tr>
                 <td>Call Cell: </td>
                 <td>{{newUser.cellPhone}}</td>
-                <td><span class="glyphicon glyphicon-earphone"></span></td>
+                <td><a href="tel:{{newUser.cellPhone}}"><span class="glyphicon glyphicon-earphone"></span></a></td>
             </tr>
             <tr>
                 <td>SMS: </td>
                 <td>{{newUser.cellPhone}}</td>
-                <td><span class="glyphicon glyphicon-comment"></span></td>
+                <td><a href="sms:{{newUser.cellPhone}}"><span class="glyphicon glyphicon-comment"></span></a></td>
             </tr>
             <tr>
                 <td>Email: </td>
                 <td>{{newUser.email}}</td>
-                <td><span class="glyphicon glyphicon-envelope"></span></td>
+                <td><a href="mailto:{{newUser.email}}"><span class="glyphicon glyphicon-envelope"></span></a></td>
             </tr>
             </tbody>
         </table>

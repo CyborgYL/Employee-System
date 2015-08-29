@@ -44,8 +44,8 @@
 
     <hr>
     <button ng-disabled="currentPage == 0" ng-click="previousPage()">Previous</button>
-    {{currentPage+1}}/{{numberOfPages()}}
-    <button ng-disabled="currentPage >= users.length/pageSize - 1" ng-click="nextPage()">Next</button>
+    {{currentPage}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= users.length/pageSize" ng-click="nextPage()">Next</button>
 
 
     {{newUser}}
