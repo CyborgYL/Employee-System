@@ -18,16 +18,26 @@ multi.controller('listCtrl', function($scope, $timeout, userData) {
 
     $scope.changePageSize = function(size) {
         $scope.pageSize =  Number(size);
-        $scope.currentPage = 1;
         $scope.pageStart = 0;
-        $scope.numOfPages = Math.ceil($scope.users.length/$scope.pageSize);
+        $scope.numOfPages = Math.ceil($scope.filtered.length/$scope.pageSize);
+        if ($scope.numOfPages == 0) {
+            $scope.currentPage = 0;
+        }
+        else{
+            $scope.currentPage = 1;
+        }
     };
 
     $scope.viewAll = function() {
         $scope.pageSize = $scope.users.length;
-        $scope.currentPage = 1;
         $scope.pageStart = 0;
-        $scope.numOfPages = Math.ceil($scope.users.length/$scope.pageSize);
+        $scope.numOfPages = Math.ceil($scope.filtered.length / $scope.pageSize);
+        if ($scope.numOfPages == 0) {
+            $scope.currentPage = 0;
+        }
+        else{
+            $scope.currentPage = 1;
+        }
     };
 
 
@@ -92,16 +102,26 @@ multi.controller('directReportsCtrl', function($scope, $routeParams, $timeout, u
 
     $scope.changePageSize = function(size) {
         $scope.pageSize =  parseInt(size, 10);
-        $scope.currentPage = 1;
         $scope.pageStart = 0;
-        $scope.numOfPages = Math.ceil($scope.users.length/$scope.pageSize);
+        $scope.numOfPages = Math.ceil($scope.filtered.length / $scope.pageSize);
+        if ($scope.numOfPages == 0) {
+            $scope.currentPage = 0;
+        }
+        else{
+            $scope.currentPage = 1;
+        }
     };
 
     $scope.viewAll = function() {
         $scope.pageSize = $scope.directReports.length;
-        $scope.currentPage = 1;
         $scope.pageStart = 0;
-        $scope.numOfPages = Math.ceil($scope.users.length/$scope.pageSize);
+        $scope.numOfPages = Math.ceil($scope.filtered.length / $scope.pageSize);
+        if ($scope.numOfPages == 0) {
+            $scope.currentPage = 0;
+        }
+        else{
+            $scope.currentPage = 1;
+        }
     };
 
     $scope.nextPage = function(){
