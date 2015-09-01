@@ -41,7 +41,6 @@ multi.controller('listCtrl', function($scope, userData) {
 });
 
 multi.controller('showCtrl', function($scope, $routeParams,  userData) {
-    $scope.users = userData.list();
     $scope.userId = $routeParams.userId;
     $scope.newUser = userData.getUser($routeParams.userId);
 

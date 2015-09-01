@@ -50,12 +50,18 @@ multi.service('userData', function($location) {
             manager:{id:2, fName:'Sal', lName: 'Smith'}, directReports:"" }
     ];
     var i;
-    var num = users.length;
+    var j;
+    var num = users[0].id;
+
+    for (j=1; j<users.length; j++) {
+        num = Math.max(users[j].id, num);
+    }
 
 
     this.saveUser = function(user) {
         if (user.id == null){
-            user.id = num++;
+            num++;
+            user.id = num;
             users.push(user);
         }
         else {
