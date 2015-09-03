@@ -2,24 +2,24 @@ multi.service('userData', function($location) {
     var users = [
         {id:0, fName:'Hege', lName:"Pege", sex: "Male", age: "63", title: "President and CEO", url:"img/Hege.jpg",
             officePhone: "781-000-0000", cellPhone: "617-000-0000", email: "Hege@fakemail.com",
-            manager:{id:0, fName:'I am the BOSS!', lName: 'HAHAHA!'}, directReports:["1"] },
+            manager:{id:0, fName:'I am the BOSS!', lName: 'HAHAHA!'}, directReports:[{id:1}] },
 
         {id:1, fName:'Kim',  lName:"Pim", sex: "Male", age: "65", title: "CFO",url:"img/Kim.jpg",
             officePhone: "781-000-0001", cellPhone: "617-000-0001", email: "Kim@fakemail.com",
-            manager:{id:0, fName:'Hege', lName: 'Pege'}, directReports:["2", "3", "4"]
+            manager:{id:0, fName:'Hege', lName: 'Pege'}, directReports:[{id:2}, {id:3}, {id:4}]
         },
 
         {id:2, fName:'Sal',  lName:"Smith", sex: "Male", age: "57", title: "VP of Engineering", url:"img/Sal.jpg",
             officePhone: "781-000-0002", cellPhone: "617-000-0002", email: "Sal@fakemail.com",
-            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:["11", "6"] },
+            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:[{id:6}, {id:11}] },
 
         {id:3, fName:'Jack', lName:"Jones", sex: "Male", age: "60", title: "VP of Sales", url:"img/Jack.jpg",
             officePhone: "781-000-0003", cellPhone: "617-000-0003", email: "Jack@fakemail.com",
-            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:["8", "9"] },
+            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:[{id:8}, {id:9}] },
 
         {id:4, fName:'Joyce', lName:"Allan", sex: "Female", age: "66", title: "VP of Marketing", url:"img/Joyce.jpg",
             officePhone: "781-000-0004", cellPhone: "617-000-0004", email: "Joyce@fakemail.com",
-            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:["5", "7", "10"] },
+            manager:{id:1, fName:'Kim', lName: 'Pim'}, directReports:[{id:5}, {id:7}, {id:10}] },
 
         {id:5, fName:'John', lName:"Doe", sex: "Male", age: "40", title: "Marketing Manager", url:"img/John.jpg",
             officePhone: "781-000-0005", cellPhone: "617-000-0005", email: "John@fakemail.com",
@@ -90,7 +90,7 @@ multi.service('userData', function($location) {
     };
 
 
-    this.list = function() {
+    this.list_users = function() {
         return users;
     };
 

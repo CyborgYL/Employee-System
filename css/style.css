@@ -68,6 +68,7 @@
 }
 
 
-.asterisk {
+.asterisk,
+.error-message {
     color:red;
 }

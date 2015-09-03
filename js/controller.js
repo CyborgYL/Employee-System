@@ -1,5 +1,5 @@
 multi.controller('listCtrl', function($scope, $timeout, userData) {
-    $scope.users = userData.list();
+    $scope.users = userData.list_users();
     $scope.predicate = 'id';
     $scope.reverse = true;
     $scope.currentPage = 1;
@@ -80,7 +80,7 @@ multi.controller('showCtrl', function($scope, $routeParams,  userData) {
 });
 
 multi.controller('directReportsCtrl', function($scope, $routeParams, $timeout, userData) {
-    $scope.users = userData.list();
+    $scope.users = userData.list_users();
     $scope.userId = $routeParams.userId;
     $scope.directReports = userData.getUser($routeParams.userId).directReports;
     $scope.pageSize = 5;
@@ -96,8 +96,8 @@ multi.controller('directReportsCtrl', function($scope, $routeParams, $timeout, u
     }
 
     for (var i= 0; i<$scope.directReports.length; i++) {
-        var id = $scope.directReports[i];
-        $scope.reports.push($scope.users[id]);
+        var num = $scope.directReports[i].id;
+        $scope.reports.push($scope.users[num]);
     }
 
     $scope.changePageSize = function(size) {
@@ -154,6 +154,7 @@ multi.controller('directReportsCtrl', function($scope, $routeParams, $timeout, u
 
 
 multi.controller('editCtrl', function($scope, $routeParams, userData) {
+    $scope.users = userData.list_users();
     $scope.edit = true;
     $scope.userId = $routeParams.userId;
     $scope.mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -163,6 +164,7 @@ multi.controller('editCtrl', function($scope, $routeParams, userData) {
     if ($scope.userId == 'new') {
         $scope.edit = false;
         $scope.newUser = {};
+        $scope.newUser.id = null;
     }
     else {
         $scope.edit = true;
@@ -201,7 +203,7 @@ multi.controller('editCtrl', function($scope, $routeParams, userData) {
 
     $scope.reset = function () {
         angular.copy($scope.initialValue, $scope.newUser);
-    }
+    };
 
     $scope.goBack = function() {
         window.history.back();
