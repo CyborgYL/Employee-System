@@ -1,0 +1,72 @@
+<div class="show-detail">
+    <h3><a ng-click="goBack()"><span class="glyphicon glyphicon-chevron-left"></span></a> Employee Information: </h3>
+    <div class="container">
+        <table class="table table-striped">
+            <tbody>
+            <tr class="name-title">
+                <td><img src="{{ newUser.url }}" alt="Photo"></td>
+                <td><p>{{newUser.fName}} {{newUser.lName}}</p><p>{{newUser.title}}</p></td>
+                <td><a href="#/editUser/{{newUser.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            </tr>
+            <tr>
+                <td>ID: </td>
+                <td>{{newUser.id}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>{{newUser.age}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sex: </td>
+                <td>{{newUser.sex}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>View Manager: </td>
+                <td>{{newUser.manager.fName}} {{newUser.manager.lName}}</td>
+                <td>
+                    <a href="#/showUser/{{newUser.manager.id}}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>View Direct Reports: </td>
+                <td>{{newUser.directReports.length}}</td>
+                <td><a href="#/directReports/{{newUser.id}}"><span class="glyphicon glyphicon-chevron-right"></span></a></td>
+            </tr>
+            <tr>
+                <td>Call Office: </td>
+                <td>{{newUser.officePhone}}</td>
+                <td><a href="tel:{{newUser.officePhone}}"><span class="glyphicon glyphicon-phone-alt"></span></a></td>
+            </tr>
+            <tr>
+                <td>Call Cell: </td>
+                <td>{{newUser.cellPhone}}</td>
+                <td><a href="tel:{{newUser.cellPhone}}"><span class="glyphicon glyphicon-earphone"></span></a></td>
+            </tr>
+            <tr>
+                <td>SMS: </td>
+                <td>{{newUser.cellPhone}}</td>
+                <td><a href="sms:{{newUser.cellPhone}}"><span class="glyphicon glyphicon-comment"></span></a></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>{{newUser.email}}</td>
+                <td><a href="mailto:{{newUser.email}}"><span class="glyphicon glyphicon-envelope"></span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+</div>
+
+
+<script>
+    if (newUser.sex = "Female"){
+        document.getElementById("Female").checked = true;
+    }
+    else {
+        document.getElementById("Male").checked = true;
+    }
+</script>

@@ -1,0 +1,42 @@
+<div class="container list">
+    <br><br>
+    <div class="row">
+        <div>Search: <input type="text" ng-model="search" ng-change="filter()" placeholder="Search"/></div>
+    </div>
+    <hr>
+
+    <h3><a ng-click="goBack()"><span class="glyphicon glyphicon-chevron-left"></span></a> Direct Reports</h3>
+    <div class="dropdown sort-btn">
+        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Sort
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="" ng-click="order('fName')">First Name</a></li>
+            <li><a href="" ng-click="order('lName')">Last Name</a></li>
+            <li><a href="" ng-click="order('title')">Title</a></li>
+        </ul>
+    </div>
+
+    <table class="table table-striped">
+        <tbody>
+        <tr ng-repeat="report in filtered = (reports | filter : search) | orderBy:predicate:reverse | limitTo:pageSize:pageStart" >
+            <td>
+                <img src="{{ report.url }}" alt="Photo">
+            </td>
+            <td><span class="name">{{ report.fName }} {{ report.lName }}</span>
+                <br><span class="title">{{ report.title }}</span>
+            </td>
+            <td>{{report.directReports.length}}</td>
+            <td><a href="#/showUser/{{report.id}}">Detail</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button ng-click="viewAll()" ng-disabled="currentPage == 0" class="btn btn-link view-page">View All</button>
+    <button ng-click="changePageSize(5)" ng-disabled="currentPage == 0" class="btn btn-link view-page">View 5</button>
+
+    <hr>
+    <button ng-disabled="currentPage == 1 || currentPage == 0" ng-click="previousPage()">Previous</button>
+    {{currentPage}}/{{numOfPages}}
+    <button ng-disabled="currentPage >= users.length/pageSize || currentPage >= filtered.length/pageSize" ng-click="nextPage()">Next</button>
+</div>
+
