@@ -1,4 +1,4 @@
-multi.service('userData', function($location) {
+multi.service('userData', ['$location', function($location) {
     var users = [
         {id:0, fName:'Hege', lName:"Pege", sex: "Male", age: "63", title: "President and CEO", url:"img/Hege.jpg",
             officePhone: "781-000-0000", cellPhone: "617-000-0000", email: "Hege@fakemail.com",
@@ -97,4 +97,4 @@ multi.service('userData', function($location) {
     this.go = function (path) {
         $location.path(path);
     };
-});
+}]);
