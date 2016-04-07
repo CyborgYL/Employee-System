@@ -1,4 +1,4 @@
-multi.service('userData', ['$location', function($location) {
+multi.factory('userData', ['$location', function userDataFactory($location) {
     var users = [
         {id:0, fName:'Hege', lName:"Pege", sex: "Male", age: "63", title: "President and CEO", url:"img/Hege.jpg",
             officePhone: "781-000-0000", cellPhone: "617-000-0000", email: "Hege@fakemail.com",
@@ -56,45 +56,42 @@ multi.service('userData', ['$location', function($location) {
     for (j=1; j<users.length; j++) {
         num = Math.max(users[j].id, num);
     }
-
-
-    this.saveUser = function(user) {
-        if (user.id == null){
-            num++;
-            user.id = num;
-            users.push(user);
-        }
-        else {
-            for (i in users) {
-                if (users[i].id == user.id){
-                    users[i] = user;
-                }
-            }
-        }
-    };
-
-    this.getUser = function(id) {
-        for (i in users) {
-            if (users[i].id == id){
-                return users[i];
-            }
-        }
-    };
-
-    this.deleteUser = function(id) {
-        for (i in users) {
-            if (users[i].id == id) {
-                users.splice(i, 1);
-            }
-        }
-    };
-
-
-    this.list_users = function() {
-        return users;
-    };
-
-    this.go = function (path) {
-        $location.path(path);
-    };
+	
+	return {
+		saveUser: function(user) {
+			if (user.id == null){
+				num++;
+				user.id = num;
+				users.push(user);
+			}
+			else {
+				for (i in users) {
+					if (users[i].id == user.id){
+						users[i] = user;
+					}
+				}
+			}
+		},
+		 getUser: function(id) {
+			for (i in users) {
+				if (users[i].id == id){
+					return users[i];
+				}
+			}
+		},
+		deleteUser: function(id) {
+			for (i in users) {
+				if (users[i].id == id) {
+					users.splice(i, 1);
+				}
+			}
+		},
+		list_users: function() {
+			return users;
+		},
+		go: function (path) {
+			$location.path(path);
+		}
+	};
+ 
 }]);
