@@ -1,4 +1,4 @@
-multi.controller('listCtrl',['$scope','userData','$timeout', function($scope, $timeout, userData) {
+multi.controller('listCtrl', function($scope, $timeout, userData) {
     $scope.users = userData.list_users();
     $scope.predicate = 'id';
     $scope.reverse = true;
@@ -64,9 +64,9 @@ multi.controller('listCtrl',['$scope','userData','$timeout', function($scope, $t
         }, 10);
         $scope.pageStart = 0;
     };
-}]);
+});
 
-multi.controller('showCtrl', ['$scope', '$routeParams', 'userData', function($scope, $routeParams,  userData) {
+multi.controller('showCtrl', function($scope, $routeParams,  userData) {
     $scope.userId = $routeParams.userId;
     $scope.newUser = userData.getUser($routeParams.userId);
 
@@ -77,9 +77,9 @@ multi.controller('showCtrl', ['$scope', '$routeParams', 'userData', function($sc
     $scope.goBack = function() {
         window.history.back();
     };
-}]);
+});
 
-multi.controller('directReportsCtrl', ['$scope', '$routeParams', '$timeout','userData',function($scope, $routeParams, $timeout, userData) {
+multi.controller('directReportsCtrl', function($scope, $routeParams, $timeout, userData) {
     $scope.users = userData.list_users();
     $scope.userId = $routeParams.userId;
     $scope.directReports = userData.getUser($routeParams.userId).directReports;
@@ -149,11 +149,11 @@ multi.controller('directReportsCtrl', ['$scope', '$routeParams', '$timeout','use
     $scope.goBack = function() {
         window.history.back();
     };
-}]);
+});
 
 
 
-multi.controller('editCtrl', ['$scope', '$routeParams', 'userData', function($scope, $routeParams, userData) {
+multi.controller('editCtrl', function($scope, $routeParams, userData) {
     $scope.users = userData.list_users();
     $scope.edit = true;
     $scope.userId = $routeParams.userId;
@@ -208,4 +208,4 @@ multi.controller('editCtrl', ['$scope', '$routeParams', 'userData', function($sc
     $scope.goBack = function() {
         window.history.back();
     };
-}]);
+});
