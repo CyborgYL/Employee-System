@@ -1,4 +1,4 @@
-multi.service('userData', function($location) {
+multi.factory('userData', ['$scope','$location', function userDataFactory($scope, $location) {
     var users = [
         {id:0, fName:'Hege', lName:"Pege", sex: "Male", age: "63", title: "President and CEO", url:"img/Hege.jpg",
             officePhone: "781-000-0000", cellPhone: "617-000-0000", email: "Hege@fakemail.com",
@@ -57,8 +57,8 @@ multi.service('userData', function($location) {
         num = Math.max(users[j].id, num);
     }
 
-
-    this.saveUser = function(user) {
+	return { 
+	saveUser : function(user) {
         if (user.id == null){
             num++;
             user.id = num;
@@ -71,30 +71,32 @@ multi.service('userData', function($location) {
                 }
             }
         }
-    };
+    },
 
-    this.getUser = function(id) {
+    getUser : function(id) {
         for (i in users) {
             if (users[i].id == id){
                 return users[i];
             }
         }
-    };
+    },
 
-    this.deleteUser = function(id) {
+   deleteUser : function(id) {
         for (i in users) {
             if (users[i].id == id) {
                 users.splice(i, 1);
             }
         }
-    };
+    },
 
 
-    this.list_users = function() {
+    list_users: function() {
         return users;
-    };
+    },
 
-    this.go = function (path) {
+    go : function (path) {
         $location.path(path);
-    };
-});
+		console.log(path);
+    }};
+   
+}]);
